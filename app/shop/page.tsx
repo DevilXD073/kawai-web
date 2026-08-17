@@ -1,0 +1,13 @@
+"use client";
+import { useMemo, useState } from "react";
+import { Search, SlidersHorizontal } from "lucide-react";
+import { products } from "@/lib/products";
+import ProductGrid from "@/components/ProductGrid";
+import SectionHeading from "@/components/SectionHeading";
+
+export default function ShopPage(){
+  const [search,setSearch]=useState(""); const [category,setCategory]=useState("All"); const [sort,setSort]=useState("Featured"); const [availability,setAvailability]=useState("All");
+  const categories=["All",...Array.from(new Set(products.map(p=>p.category)))];
+  const filtered=useMemo(()=>products.filter(p=>(category==="All"||p.category===category)&&(availability==="All"||(availability==="Available"?p.available:!p.available))&&(p.name.toLowerCase().includes(search.toLowerCase())||p.description.toLowerCase().includes(search.toLowerCase()))).sort((a,b)=>sort==="Price: Low to High"?a.price-b.price:sort==="Price: High to Low"?b.price-a.price:sort==="Newest"?Number(b.new)-Number(a.new):sort==="Popular"?Number(b.popular)-Number(a.popular):Number(b.featured)-Number(a.featured)),[search,category,sort,availability]);
+  return <div className="container-k py-16 md:py-20"><SectionHeading eyebrow="Marketplace" title="Shop All Services" subtitle="Find exactly what you need."/><div className="mb-8 grid gap-3 rounded-3xl border border-white/5 bg-white/[.02] p-4 md:grid-cols-[1.5fr_1fr_1fr_1fr]"><label className="relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-600" size={17}/><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search products..." className="h-11 w-full rounded-xl border border-white/10 bg-black/40 pl-10 pr-3 text-sm outline-none focus:border-pink-400/40"/></label><select value={category} onChange={e=>setCategory(e.target.value)} className="h-11 rounded-xl border border-white/10 bg-black/40 px-3 text-sm text-zinc-300">{categories.map(c=><option key={c}>{c}</option>)}</select><select value={sort} onChange={e=>setSort(e.target.value)} className="h-11 rounded-xl border border-white/10 bg-black/40 px-3 text-sm text-zinc-300">{["Featured","Price: Low to High","Price: High to Low","Newest","Popular"].map(x=><option key={x}>{x}</option>)}</select><select value={availability} onChange={e=>setAvailability(e.target.value)} className="h-11 rounded-xl border border-white/10 bg-black/40 px-3 text-sm text-zinc-300">{["All","Available","Out of Stock"].map(x=><option key={x}>{x}</option>)}</select></div><div className="mb-5 flex items-center gap-2 text-xs text-zinc-600"><SlidersHorizontal size={14}/>{filtered.length} services</div><ProductGrid products={filtered}/></div>
+}
