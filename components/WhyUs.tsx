@@ -1,0 +1,4 @@
+import { Zap, Heart, Gem, Headphones } from "lucide-react";
+import SectionHeading from "./SectionHeading";
+const data = [[Zap,"Fast Delivery","Quick processing and delivery."],[Heart,"Kawaii Prices","Affordable services without sacrificing quality."],[Gem,"Premium Quality","Carefully selected services and products."],[Headphones,"Support","We’re here whenever you need help."]];
+export default function WhyUs(){return <section className="container-k py-20"><SectionHeading eyebrow="The Kawai Standard" title="Why Choose Us?"/><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{data.map(([Icon,title,text])=>{const I=Icon as typeof Zap;return <div key={title as string} className="glass rounded-3xl p-6"><I size={21} className="text-pink-300"/><h3 className="mt-6 font-semibold">{title as string}</h3><p className="mt-2 text-sm leading-6 text-zinc-500">{text as string}</p></div>})}</div></section>}

@@ -1,0 +1,3 @@
+import { Clock3, Gem, Heart, Headphones } from "lucide-react";
+const items = [[Clock3,"Fast Delivery"],[Gem,"Affordable Prices"],[Heart,"Quality Services"],[Headphones,"Community Support"]];
+export default function TrustStrip() { return <section className="border-y border-white/5 bg-white/[.015]"><div className="container-k grid grid-cols-2 divide-x divide-white/5 md:grid-cols-4">{items.map(([Icon,label]) => { const I=Icon as typeof Clock3; return <div key={String(label)} className="flex items-center justify-center gap-3 px-3 py-5 text-sm text-zinc-300"><I size={18} className="text-pink-300"/>{label as string}</div> })}</div></section>; }
