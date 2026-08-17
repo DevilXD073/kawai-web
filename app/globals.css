@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #050505;
+  color: #fff;
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+}
+::selection { background: rgba(255,79,163,.35); }
+a, button, input, select { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #ff9dca;
+  outline-offset: 3px;
+}
+.container-k { width: min(1180px, calc(100% - 32px)); margin-inline: auto; }
+.glass {
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,105,180,.14);
+  backdrop-filter: blur(18px);
+}
+.pink-gradient { background: linear-gradient(110deg, #fff 0%, #ff9dca 42%, #ff2f92 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pink-button { background: linear-gradient(135deg,#ff4fa3,#d92687); box-shadow: 0 12px 35px rgba(255,47,146,.2); }
+.pink-button:hover { box-shadow: 0 16px 42px rgba(255,47,146,.32); transform: translateY(-2px); }
+.grid-bg {
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.float { animation: float 6s ease-in-out infinite; }
+@keyframes pulseGlow { 0%,100%{opacity:.25;transform:scale(1)} 50%{opacity:.45;transform:scale(1.08)} }
+.pulse-glow { animation: pulseGlow 7s ease-in-out infinite; }
+
+.field { width:100%; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.4); padding:0 14px; font-size:14px; color:white; outline:none; } .field:focus { border-color:rgba(255,79,163,.4); }

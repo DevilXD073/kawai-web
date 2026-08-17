@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <div className="container-k flex min-h-[65vh] flex-col items-center justify-center text-center"><p className="text-xs uppercase tracking-[.25em] text-pink-300">404</p><h1 className="mt-4 text-4xl font-semibold">This page wandered off ♡</h1><p className="mt-3 text-zinc-500">The service or page you requested could not be found.</p><Link href="/shop" className="pink-button mt-7 rounded-xl px-5 py-3 font-semibold">Back to Shop</Link></div>}

@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="container-k grid min-h-[65vh] place-items-center"><div className="text-center"><div className="mx-auto h-10 w-10 animate-pulse rounded-full border border-pink-400/30 bg-pink-500/10"/><p className="mt-4 text-sm text-zinc-600">Loading the kawaii store…</p></div></div>}
